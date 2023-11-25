@@ -38,6 +38,7 @@ android {
 dependencies {
     // TODO: Update the godot dep when 4.2 is stable
     implementation("org.godotengine:godot:4.2.0.beta-SNAPSHOT")
+    implementation("com.yandex.android:mobileads:6.2.0")
 }
 
 // BUILD TASKS DEFINITION
