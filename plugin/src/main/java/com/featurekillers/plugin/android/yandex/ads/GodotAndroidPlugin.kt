@@ -1,5 +1,4 @@
-// TODO: Update to match your plugin's package name.
-package org.godotengine.plugin.android.template
+package com.featurekillers.plugin.android.yandex.ads
 
 import android.util.Log
 import android.widget.Toast
