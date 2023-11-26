@@ -10,6 +10,15 @@ signal interstitial_ad_dismissed()
 signal interstitial_ad_clicked()
 signal interstitial_ad_impression()
 
+signal rewarded_ad_loaded()
+signal rewarded_ad_failed_to_load()
+signal rewarded_ad_shown()
+signal rewarded_ad_failed_to_show()
+signal rewarded_ad_dismissed()
+signal rewarded_ad_clicked()
+signal rewarded_ad_impression()
+signal rewarded_ad_rewarded()
+
 var _plugin_name: = "YandexAdsGodotPlugin"
 var _plugin_singleton: Object
 
@@ -32,6 +41,23 @@ func _init():
 		_plugin_singleton.interstitial_ad_impression.connect(
 				func(): interstitial_ad_impression.emit())
 		
+		_plugin_singleton.rewarded_ad_loaded.connect(
+				func(): rewarded_ad_loaded.emit())
+		_plugin_singleton.rewarded_ad_failed_to_load.connect(
+				func(): rewarded_ad_failed_to_load.emit())
+		_plugin_singleton.rewarded_ad_shown.connect(
+				func(): rewarded_ad_shown.emit())
+		_plugin_singleton.rewarded_ad_failed_to_show.connect(
+				func(): rewarded_ad_failed_to_show.emit())
+		_plugin_singleton.rewarded_ad_dismissed.connect(
+				func(): rewarded_ad_dismissed.emit())
+		_plugin_singleton.rewarded_ad_clicked.connect(
+				func(): rewarded_ad_clicked.emit())
+		_plugin_singleton.rewarded_ad_impression.connect(
+				func(): rewarded_ad_impression.emit())
+		_plugin_singleton.rewarded_ad_rewarded.connect(
+				func(): rewarded_ad_rewarded.emit())
+		
 		_plugin_singleton.setInterstitialAdUnitId(
 				ProjectSettings.get_setting("ads/yandex/interstitial unit id"))
 		_plugin_singleton.setInterstitialAdAutoload(
@@ -40,6 +66,13 @@ func _init():
 			_plugin_singleton.initInterstitialAdLoader()
 			_plugin_singleton.loadInterstitialAd()
 		
+		_plugin_singleton.setRewardedAdUnitId(
+				ProjectSettings.get_setting("ads/yandex/rewarded unit id"))
+		_plugin_singleton.setRewardedAdAutoload(
+				ProjectSettings.get_setting("ads/yandex/rewarded autoload ads"))
+		if ProjectSettings.get_setting("ads/yandex/rewarded autostart"):
+			_plugin_singleton.initRewardedAdLoader()
+			_plugin_singleton.loadRewardedAd()
 	else:
 		push_warning("Unable to access the java YandexAds logic")
 
@@ -75,5 +108,33 @@ func destroyInterstitialAdLoader():
 func destroyInterstitialAd():
 	if _plugin_singleton:
 		_plugin_singleton.destroyInterstitialAd()
+	else:
+		push_warning("Unable to access the java YandexAds logic")
+
+## 
+func loadRewardedAd():
+	if _plugin_singleton:
+		_plugin_singleton.loadRewardedAd()
+	else:
+		push_warning("Unable to access the java YandexAds logic")
+
+## 
+func showRewardedAd():
+	if _plugin_singleton:
+		_plugin_singleton.showRewardedAd()
+	else:
+		push_warning("Unable to access the java YandexAds logic")
+
+## 
+func destroyRewardedAdLoader():
+	if _plugin_singleton:
+		_plugin_singleton.destroyRewardedAdLoader()
+	else:
+		push_warning("Unable to access the java YandexAds logic")
+
+## 
+func destroyRewardedAd():
+	if _plugin_singleton:
+		_plugin_singleton.destroyRewardedAd()
 	else:
 		push_warning("Unable to access the java YandexAds logic")
