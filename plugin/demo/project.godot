@@ -8,19 +8,31 @@
 
 config_version=5
 
+[ads]
+
+"yandex/interstitial unit id"="demo-interstitial-yandex"
+"yandex/interstitial autostart"=true
+"yandex/interstitial autoload ads"=true
+"yandex/rewarded unit id"="demo-rewarded-yandex"
+"yandex/rewarded autostart"=true
+"yandex/rewarded autoload ads"=true
+
 [application]
 
-config/name="Android Plugin Demo"
+config/name="YandexAdsTest"
+config/tags=PackedStringArray("addon", "in_progress", "testing")
 run/main_scene="res://main.tscn"
-config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+config/features=PackedStringArray("4.2")
+config/icon="res://icon.png"
 
-[debug]
+[autoload]
 
-settings/stdout/verbose_stdout=true
+YandexAds="*res://addons/YandexAdsGodotPlugin/yandex_ads_autoload.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/YandexAdsGodotPlugin/plugin.cfg")
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
