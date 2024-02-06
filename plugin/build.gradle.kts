@@ -37,7 +37,7 @@ android {
 
 dependencies {
     implementation("org.godotengine:godot:4.2.0.stable")
-    implementation("com.yandex.android:mobileads:6.2.0")
+    implementation("com.yandex.android:mobileads:6.3.0")
 }
 
 // BUILD TASKS DEFINITION

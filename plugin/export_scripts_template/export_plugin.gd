@@ -100,4 +100,4 @@ class YandexAdsExportPlugin extends EditorExportPlugin:
 		return _plugin_name
 	
 	func _get_android_dependencies(platform: EditorExportPlatform, debug: bool) -> PackedStringArray:
-		return ["com.yandex.android:mobileads:6.2.0"]
+		return ["com.yandex.android:mobileads:6.3.0"]
