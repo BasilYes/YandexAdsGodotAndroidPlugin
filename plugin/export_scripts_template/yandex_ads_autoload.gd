@@ -59,17 +59,21 @@ func _init():
 				func(): rewarded_ad_rewarded.emit())
 		
 		_plugin_singleton.setInterstitialAdUnitId(
-				ProjectSettings.get_setting("ads/yandex/interstitial unit id"))
+			ProjectSettings.get_setting("ads/yandex/interstitial unit id", "demo-interstitial-yandex")
+		)
 		_plugin_singleton.setInterstitialAdAutoload(
-				ProjectSettings.get_setting("ads/yandex/interstitial autoload ads"))
-		if ProjectSettings.get_setting("ads/yandex/interstitial autostart"):
+			ProjectSettings.get_setting("ads/yandex/interstitial autoload ads", false)
+		)
+		if ProjectSettings.get_setting("ads/yandex/interstitial autostart", false):
 			_plugin_singleton.initInterstitialAdLoader()
 			_plugin_singleton.loadInterstitialAd()
 		
 		_plugin_singleton.setRewardedAdUnitId(
-				ProjectSettings.get_setting("ads/yandex/rewarded unit id"))
+			ProjectSettings.get_setting("ads/yandex/rewarded unit id", "demo-rewarded-yandex")
+		)
 		_plugin_singleton.setRewardedAdAutoload(
-				ProjectSettings.get_setting("ads/yandex/rewarded autoload ads"))
+			ProjectSettings.get_setting("ads/yandex/rewarded autoload ads", false)
+		)
 		if ProjectSettings.get_setting("ads/yandex/rewarded autostart"):
 			_plugin_singleton.initRewardedAdLoader()
 			_plugin_singleton.loadRewardedAd()

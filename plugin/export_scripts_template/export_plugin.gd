@@ -12,10 +12,14 @@ func _enter_tree():
 	
 	var setting_path: = "ads/yandex/interstitial unit id"
 	if not ProjectSettings.has_setting(setting_path):
-		ProjectSettings.set(setting_path, "your-ad-unit-id")
-	ProjectSettings.set_initial_value(setting_path, "your-ad-unit-id")
+		ProjectSettings.set(setting_path, "demo-interstitial-yandex")
+	ProjectSettings.set_initial_value(setting_path, "demo-interstitial-yandex")
 	ProjectSettings.set_as_basic(setting_path, true)
-	ProjectSettings.add_property_info({ "name": setting_path, "type": TYPE_STRING})
+	ProjectSettings.add_property_info({
+		"name": setting_path,
+		"type": TYPE_STRING,
+		"hint": PROPERTY_HINT_PASSWORD
+	})
 	ProjectSettings.set_as_internal(setting_path, false)
 	
 	setting_path = "ads/yandex/interstitial autostart"
@@ -36,10 +40,14 @@ func _enter_tree():
 	
 	setting_path = "ads/yandex/rewarded unit id"
 	if not ProjectSettings.has_setting(setting_path):
-		ProjectSettings.set(setting_path, "your-ad-unit-id")
-	ProjectSettings.set_initial_value(setting_path, "your-ad-unit-id")
+		ProjectSettings.set(setting_path, "demo-rewarded-yandex")
+	ProjectSettings.set_initial_value(setting_path, "demo-rewarded-yandex")
 	ProjectSettings.set_as_basic(setting_path, true)
-	ProjectSettings.add_property_info({ "name": setting_path, "type": TYPE_STRING})
+	ProjectSettings.add_property_info({
+		"name": setting_path,
+		"type": TYPE_STRING,
+		"hint": PROPERTY_HINT_PASSWORD
+	})
 	ProjectSettings.set_as_internal(setting_path, false)
 	
 	setting_path = "ads/yandex/rewarded autostart"
@@ -87,7 +95,9 @@ class YandexAdsExportPlugin extends EditorExportPlugin:
 
 	func _supports_platform(platform):
 		if platform is EditorExportPlatformAndroid:
-			return true
+			if get_option("gradle_build/use_gradle_build"):
+				return true
+			push_warning("Yandex Ads excluded from android build cause you don't use grudle build")
 		return false
 
 	func _get_android_libraries(platform, debug):
@@ -101,3 +111,4 @@ class YandexAdsExportPlugin extends EditorExportPlugin:
 	
 	func _get_android_dependencies(platform: EditorExportPlatform, debug: bool) -> PackedStringArray:
 		return ["com.yandex.android:mobileads:6.3.0"]
+
