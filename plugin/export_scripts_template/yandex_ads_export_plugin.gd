@@ -76,7 +76,7 @@ func _exit_tree():
 
 func _enable_plugin() -> void:
 	add_autoload_singleton("YandexAds",
-			get_script().get_path().get_base_dir().path_join("yandex_ads_autoload.gd"))
+			get_script().get_path().get_base_dir().path_join("yandex_ads.gd"))
 
 func _disable_plugin() -> void:
 	remove_autoload_singleton("YandexAds")
@@ -95,9 +95,7 @@ class YandexAdsExportPlugin extends EditorExportPlugin:
 
 	func _supports_platform(platform):
 		if platform is EditorExportPlatformAndroid:
-			if get_option("gradle_build/use_gradle_build"):
-				return true
-			push_warning("Yandex Ads excluded from android build cause you don't use grudle build")
+			return true
 		return false
 
 	func _get_android_libraries(platform, debug):

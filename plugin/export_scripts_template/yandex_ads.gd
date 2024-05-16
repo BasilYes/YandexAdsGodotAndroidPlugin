@@ -20,8 +20,10 @@ signal rewarded_ad_impression()
 signal rewarded_ad_rewarded()
 
 var _plugin_name: = "YandexAdsGodotPlugin"
-var _plugin_singleton: Object
+var _plugin_singleton: Object = null
 
+func is_working() -> bool:
+	return _plugin_singleton != null
 
 func _init():
 	if Engine.has_singleton(_plugin_name):
@@ -81,63 +83,63 @@ func _init():
 		push_warning("Unable to access the java YandexAds logic")
 
 ## 
-func initInterstitialAdLoader():
+func init_interstitial_ad_loader():
 	if _plugin_singleton:
 		_plugin_singleton.initInterstitialAdLoader()
 	else:
 		push_warning("Unable to access the java YandexAds logic")
 
 ## 
-func loadInterstitialAd():
+func load_interstitial_ad():
 	if _plugin_singleton:
 		_plugin_singleton.loadInterstitialAd()
 	else:
 		push_warning("Unable to access the java YandexAds logic")
 
 ## 
-func showInterstitialAd():
+func show_interstitial_ad():
 	if _plugin_singleton:
 		_plugin_singleton.showInterstitialAd()
 	else:
 		push_warning("Unable to access the java YandexAds logic")
 
 ## 
-func destroyInterstitialAdLoader():
+func destroy_interstitial_ad_loader():
 	if _plugin_singleton:
 		_plugin_singleton.destroyInterstitialAdLoader()
 	else:
 		push_warning("Unable to access the java YandexAds logic")
 
 ## 
-func destroyInterstitialAd():
+func destroy_interstitial_ad():
 	if _plugin_singleton:
 		_plugin_singleton.destroyInterstitialAd()
 	else:
 		push_warning("Unable to access the java YandexAds logic")
 
 ## 
-func loadRewardedAd():
+func load_rewarded_ad():
 	if _plugin_singleton:
 		_plugin_singleton.loadRewardedAd()
 	else:
 		push_warning("Unable to access the java YandexAds logic")
 
 ## 
-func showRewardedAd():
+func show_rewarded_ad():
 	if _plugin_singleton:
 		_plugin_singleton.showRewardedAd()
 	else:
 		push_warning("Unable to access the java YandexAds logic")
 
 ## 
-func destroyRewardedAdLoader():
+func destroy_rewarded_ad_loader():
 	if _plugin_singleton:
 		_plugin_singleton.destroyRewardedAdLoader()
 	else:
 		push_warning("Unable to access the java YandexAds logic")
 
 ## 
-func destroyRewardedAd():
+func destroy_rewarded_ad():
 	if _plugin_singleton:
 		_plugin_singleton.destroyRewardedAd()
 	else:

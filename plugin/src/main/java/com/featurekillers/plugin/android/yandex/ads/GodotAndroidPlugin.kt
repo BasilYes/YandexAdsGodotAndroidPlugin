@@ -120,8 +120,7 @@ class GodotAndroidPlugin(godot: Godot) : GodotPlugin(godot) {
                     override fun onAdFailedToShow(adError: AdError) {
                         // Called when an InterstitialAd failed to show.
                         // Clean resources after Ad dismissed
-                        interstitialAd?.setAdEventListener(null)
-                        interstitialAd = null
+                        destroyInterstitialAd()
 
                         // Now you can preload the next interstitial ad.
                         if (interstitialAdAutoload) loadInterstitialAd()
@@ -157,9 +156,6 @@ class GodotAndroidPlugin(godot: Godot) : GodotPlugin(godot) {
                 })
                 // now you can use ads
                 show(it)
-            }
-            interstitialAd ?: run {
-                if (interstitialAdAutoload) loadInterstitialAd()
             }
         }
     }
